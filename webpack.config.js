@@ -15,7 +15,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: "./dist",
+    contentBase: "./src/public/template/html",
     watchContentBase: true,
   },
   module: {
