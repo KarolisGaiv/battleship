@@ -80,13 +80,23 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(style, options, obj) {\n  
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/app/index.js":
+/*!**************************!*\
+  !*** ./src/app/index.js ***!
+  \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.scss */ \"./src/styles/main.scss\");\n\r\n\r\ndocument.querySelector(\".test\").innerHTML = \"Hi There!\"\r\n\r\ndocument.querySelector(\"button\").addEventListener(\"click\", () => {\r\n    console.log(\"clicked\");\r\n})\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.scss */ \"./src/styles/main.scss\");\n/* harmony import */ var _ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ship */ \"./src/app/ship.js\");\n\r\n\r\n\r\ndocument.querySelector(\".test\").innerHTML = \"Hi There!\"\r\n\r\ndocument.querySelector(\"button\").addEventListener(\"click\", () => {\r\n    const newShip = (0,_ship__WEBPACK_IMPORTED_MODULE_1__.default)(3)\r\n    console.log(newShip);\r\n})\r\n\n\n//# sourceURL=webpack://battleship/./src/app/index.js?");
+
+/***/ }),
+
+/***/ "./src/app/ship.js":
+/*!*************************!*\
+  !*** ./src/app/ship.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Ship = (shipLength) => {\r\n  const ship = {\r\n    shipLength,\r\n    isDestroyed: false,\r\n    shipPosition: [3, 4, 5, 6],\r\n    isShipBeenHit: [],\r\n    hit(square) {\r\n      if (this.shipPosition.includes(square)) {\r\n        this.isShipBeenHit.push(true);\r\n      }\r\n    },\r\n    isSunk() {\r\n      if (shipLength === this.isShipBeenHit.length) {\r\n        this.isDestroyed = true;\r\n        return this.isDestroyed;\r\n      }\r\n      return this.isDestroyed;\r\n    },\r\n  };\r\n\r\n  return ship;\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Ship);\r\n\n\n//# sourceURL=webpack://battleship/./src/app/ship.js?");
 
 /***/ })
 
@@ -162,7 +172,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/app/index.js");
 /******/ 	
 /******/ })()
 ;

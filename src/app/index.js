@@ -1,7 +1,9 @@
-import "./styles/main.scss"
+import "../styles/main.scss"
+import Ship from "./ship"
 
 document.querySelector(".test").innerHTML = "Hi There!"
 
 document.querySelector("button").addEventListener("click", () => {
-    console.log("clicked");
+    const newShip = Ship(3)
+    console.log(newShip);
 })
