@@ -1,8 +1,8 @@
-const Ship = (shipLength) => {
+const Ship = (shipLength, coordinatesArr) => {
   const ship = {
     shipLength,
     isDestroyed: false,
-    shipPosition: [3, 4, 5, 6],
+    shipPosition: coordinatesArr,
     isShipBeenHit: [],
     hit(square) {
       if (this.shipPosition.includes(square)) {

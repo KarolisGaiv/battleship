@@ -5,7 +5,8 @@ describe("Ship Factory", () => {
   describe("properties", () => {
     test("Ship length is assigned to new ship objet", () => {
       let newShipLength = 5;
-      const myNewShip = Ship(newShipLength);
+      let possitionArray = [2, 3, 4];
+      const myNewShip = Ship(newShipLength, possitionArray);
       expect(myNewShip.shipLength).toBe(newShipLength);
     });
 
@@ -22,8 +23,9 @@ describe("Ship Factory", () => {
 
   describe("hit function", () => {
     let newShip;
+    let possitionArray = [2, 3, 4];
     beforeEach(() => {
-      newShip = Ship(4);
+      newShip = Ship(4, possitionArray);
     });
 
     test("no hits", () => {
@@ -50,8 +52,9 @@ describe("Ship Factory", () => {
 
   describe("isSunk functionality", () => {
     let newShip;
+    let possitionArray = [2, 3, 4, 5];
     beforeEach(() => {
-      newShip = Ship(4);
+      newShip = Ship(4, possitionArray);
     });
 
     test("ship is alive", () => {
@@ -67,8 +70,8 @@ describe("Ship Factory", () => {
     test("ship is hit and destroyed", () => {
       newShip.hit(3);
       newShip.hit(4);
+      newShip.hit(2);
       newShip.hit(5);
-      newShip.hit(6);
       newShip.isSunk();
       expect(newShip.isDestroyed).toBe(true);
     });
