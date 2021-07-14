@@ -34,4 +34,11 @@ describe("Gameboard receive attack funcionality", () => {
     gameBoard.receiveAttack(squareToHit);
     expect(gameBoard.missedShots.length).toBe(0);
   });
+
+  test("report when all ships have been destroyed", () => {
+    gameBoard.receiveAttack(1);
+    gameBoard.receiveAttack(2);
+    gameBoard.receiveAttack(3);
+    console.log(gameBoard.shipsArray);
+  });
 });

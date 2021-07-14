@@ -7,6 +7,9 @@ const Ship = (shipLength, coordinatesArr) => {
     hit(square) {
       if (this.shipPosition.includes(square)) {
         this.isShipBeenHit.push(true);
+        if (shipLength === this.isShipBeenHit.length) {
+          this.isSunk();
+        }
       }
     },
     isSunk() {

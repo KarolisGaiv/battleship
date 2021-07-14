@@ -11,7 +11,16 @@ function Gameboard() {
     }
   }
 
+  // function checkForGameOver(ships, gameStatus) {
+  //   for (let i = 0; i < ships.length; i++) {
+  //     if (ships[i].isShipBeenHit.length === ships[i].shipLenght) {
+  //       return !gameStatus;
+  //     }
+  //   }
+  // }
+
   const gameBoard = {
+    isGameOver: false,
     shipsArray: [],
     missedShots: [],
     placeShip(length, coords) {
