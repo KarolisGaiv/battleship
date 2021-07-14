@@ -22,8 +22,9 @@ function Gameboard() {
       const targetShip = findShip(squareToHit, this.shipsArray);
       if (targetShip) {
         targetShip.hit(squareToHit);
+      } else {
+        this.missedShots.push(squareToHit);
       }
-      this.missedShots.push(squareToHit);
     },
   };
 

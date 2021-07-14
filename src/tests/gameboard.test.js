@@ -32,6 +32,6 @@ describe("Gameboard receive attack funcionality", () => {
   test("receive attack and hit ship", () => {
     let squareToHit = 3;
     gameBoard.receiveAttack(squareToHit);
-    // expect(gameBoard.test.length).toBeGreaterThan(0);
+    expect(gameBoard.missedShots.length).toBe(0);
   });
 });
