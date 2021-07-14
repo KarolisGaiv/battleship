@@ -1,14 +1,37 @@
 import { expect, test } from "@jest/globals";
-import GameBoard from "../app/gameboard";
-import Ship from "../app/ship";
+import Gameboard from "../app/gameboard";
 
-test.skip("place ship at coordinates", () => {
-  let shipCoordinates = [1, 2, 3];
-  const mock = jest.fn(shipCoordinates);
-  //   const newShip = Ship(3, shipCoordinates);
-  //   const gameboard = GameBoard(shipCoordinates);
-  //   const placeShip = gameboard.placeShip();
-  const gameBoard = GameBoard(shipCoordinates);
+describe("Gameboard placeShip functionality", () => {
+  let gameBoard = Gameboard();
+  gameBoard.placeShip(3, [1, 2, 3]);
+  expect(gameBoard.shipsArray.length).toBeGreaterThan(0);
+});
 
-  expect(mock).toBeCalledWith(shipCoordinates);
+describe("Gameboard receive attack funcionality", () => {
+  let gameBoard;
+
+  beforeEach(() => {
+    gameBoard = Gameboard();
+    gameBoard.placeShip(3, [1, 2, 3]);
+  });
+
+  test("receive attack but miss to hit ship", () => {
+    let squareToHit = 4;
+    gameBoard.receiveAttack(squareToHit);
+    function checkArray() {
+      if (gameBoard.missedShots.includes(squareToHit)) {
+        return true;
+      }
+      return false;
+    }
+    const checkResult = checkArray();
+    expect(checkResult).toBe(true);
+    expect(gameBoard.missedShots.length).toBeGreaterThan(0);
+  });
+
+  test("receive attack and hit ship", () => {
+    let squareToHit = 3;
+    gameBoard.receiveAttack(squareToHit);
+    // expect(gameBoard.test.length).toBeGreaterThan(0);
+  });
 });

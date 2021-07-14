@@ -1,7 +1,7 @@
 import { expect, test } from "@jest/globals";
 import Ship from "../app/ship";
 
-describe("Ship Factory", () => {
+describe.skip("Ship Factory", () => {
   describe("properties", () => {
     test("Ship length is assigned to new ship objet", () => {
       let newShipLength = 5;
