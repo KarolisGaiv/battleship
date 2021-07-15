@@ -45,4 +45,17 @@ describe("Computer attack functionality", () => {
     enemy.autoAttack(playerBoard);
     expect(playerBoard.missedShots.length).toBe(1);
   });
+  test("prevent for targeting same place twice", () => {
+    let n = 0;
+    let counter = 0;
+    while (n <= 100) {
+      enemy.autoAttack(playerBoard);
+      counter++;
+      n++;
+      if (enemy.playerMoves.length === 25) {
+        break;
+      }
+    }
+    expect(enemy.playerMoves.length).toBeLessThanOrEqual(26);
+  });
 });
