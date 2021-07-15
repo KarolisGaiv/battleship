@@ -1,7 +1,8 @@
 import Gameboard from "./gameboard";
 
-function Player(name, type = "human") {
+function Player(type = "human") {
   const player = {
+    type,
     startGame() {
       const playerBoard = Gameboard();
       return playerBoard;
