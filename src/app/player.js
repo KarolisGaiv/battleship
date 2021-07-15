@@ -10,6 +10,14 @@ function Player(type = "human") {
     attack(square, enemyBoard) {
       enemyBoard.receiveAttack(square);
     },
+    autoAttack(targetBoard) {
+      if (this.type != "human") {
+        const choice = Math.floor(Math.random() * 25) + 1;
+        targetBoard.receiveAttack(choice);
+        return choice;
+      }
+      return;
+    },
   };
 
   return player;
