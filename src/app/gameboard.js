@@ -11,14 +11,6 @@ function Gameboard() {
     }
   }
 
-  // function checkForGameOver(ships, gameStatus) {
-  //   for (let i = 0; i < ships.length; i++) {
-  //     if (ships[i].isShipBeenHit.length === ships[i].shipLenght) {
-  //       return !gameStatus;
-  //     }
-  //   }
-  // }
-
   const gameBoard = {
     isGameOver: false,
     shipsArray: [],
@@ -28,12 +20,23 @@ function Gameboard() {
       this.shipsArray.push(ship);
     },
     receiveAttack(squareToHit) {
+      // Find ship to be hit
       const targetShip = findShip(squareToHit, this.shipsArray);
       if (targetShip) {
         targetShip.hit(squareToHit);
       } else {
         this.missedShots.push(squareToHit);
       }
+    },
+    checkForGameOver(placedShips) {
+      const isAllShipsDestroyed = placedShips.every((ship) => {
+        ship.isSunk();
+        return ship.isDestroyed;
+      });
+      if (isAllShipsDestroyed) {
+        this.isGameOver = !this.isGameOver;
+      }
+      return this.isGameOver;
     },
   };
 

@@ -34,11 +34,27 @@ describe("Gameboard receive attack funcionality", () => {
     gameBoard.receiveAttack(squareToHit);
     expect(gameBoard.missedShots.length).toBe(0);
   });
+});
 
+describe("Gameboard check game over functionality", () => {
   test("report when all ships have been destroyed", () => {
+    let gameBoard = Gameboard();
+    gameBoard.placeShip(3, [1, 2, 3]);
+
     gameBoard.receiveAttack(1);
     gameBoard.receiveAttack(2);
     gameBoard.receiveAttack(3);
-    console.log(gameBoard.shipsArray);
+    expect(gameBoard.checkForGameOver(gameBoard.shipsArray)).toBe(true);
+    expect(gameBoard.isGameOver).toBe(true);
+  });
+
+  test("not all ships have been destroyed", () => {
+    let gameBoard = Gameboard();
+    gameBoard.placeShip(1, [1]);
+    gameBoard.placeShip(1, [5]);
+
+    gameBoard.receiveAttack(1);
+    expect(gameBoard.checkForGameOver(gameBoard.shipsArray)).toBe(false);
+    expect(gameBoard.isGameOver).toBe(false);
   });
 });
