@@ -2,11 +2,12 @@ import Gameboard from "./gameboard";
 
 function Player(type = "human") {
   const player = {
+    playerGameboard: {},
     playerMoves: [],
-    type,
+    type: type != "human" ? (type = "computer") : (type = "human"),
     startGame() {
       const playerBoard = Gameboard();
-      return playerBoard;
+      this.playerGameboard = playerBoard;
     },
     attack(square, enemyBoard) {
       enemyBoard.receiveAttack(square);

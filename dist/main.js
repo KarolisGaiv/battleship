@@ -80,13 +80,43 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(style, options, obj) {\n  
 
 /***/ }),
 
+/***/ "./src/app/game.js":
+/*!*************************!*\
+  !*** ./src/app/game.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"initiateGame\": () => (/* binding */ initiateGame)\n/* harmony export */ });\n/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./player */ \"./src/app/player.js\");\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gameboard */ \"./src/app/gameboard.js\");\n\r\n\r\n\r\nfunction initiateGame() {\r\n  const user = (0,_player__WEBPACK_IMPORTED_MODULE_0__.default)();\r\n  const computer = (0,_player__WEBPACK_IMPORTED_MODULE_0__.default)(\"computer\");\r\n  user.startGame();\r\n  computer.startGame();\r\n  console.log(user);\r\n  user.playerGameboard.placeShip(2, [3, 4]);\r\n  user.playerGameboard.placeShip(3, [15, 16, 17]);\r\n  user.playerGameboard.placeShip(4, [20, 21, 22, 23]);\r\n  user.playerGameboard.placeShip(2, [10, 11]);\r\n  user.playerGameboard.placeShip(2, [17, 18]);\r\n  computer.playerGameboard.placeShip(2, [0, 1]);\r\n  computer.playerGameboard.placeShip(3, [7, 8, 9]);\r\n  computer.playerGameboard.placeShip(4, [15, 16, 17, 18]);\r\n  computer.playerGameboard.placeShip(2, [22, 23]);\r\n  computer.playerGameboard.placeShip(2, [4, 3]);\r\n  console.log(user);\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://battleship/./src/app/game.js?");
+
+/***/ }),
+
+/***/ "./src/app/gameboard.js":
+/*!******************************!*\
+  !*** ./src/app/gameboard.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _app_ship__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app/ship */ \"./src/app/ship.js\");\n\r\n\r\nfunction Gameboard() {\r\n  function findShip(squareToHit, shipsArray) {\r\n    // Iterate through all ships in gameBoard\r\n    for (let i = 0; i < shipsArray.length; i++) {\r\n      // If provided coordinate exist in specific ship coordinates, return that ship obj\r\n      if (shipsArray[i].shipPosition.includes(squareToHit)) {\r\n        return shipsArray[i];\r\n      }\r\n    }\r\n  }\r\n\r\n  const gameBoard = {\r\n    isGameOver: false,\r\n    shipsArray: [],\r\n    missedShots: [],\r\n    placeShip(length, coords) {\r\n      const ship = (0,_app_ship__WEBPACK_IMPORTED_MODULE_0__.default)(length, coords);\r\n      this.shipsArray.push(ship);\r\n    },\r\n    receiveAttack(squareToHit) {\r\n      // Find ship to be hit\r\n      const targetShip = findShip(squareToHit, this.shipsArray);\r\n      if (targetShip) {\r\n        targetShip.hit(squareToHit);\r\n      } else {\r\n        this.missedShots.push(squareToHit);\r\n      }\r\n    },\r\n    checkForGameOver(placedShips) {\r\n      const isAllShipsDestroyed = placedShips.every((ship) => {\r\n        ship.isSunk();\r\n        return ship.isDestroyed;\r\n      });\r\n      if (isAllShipsDestroyed) {\r\n        this.isGameOver = !this.isGameOver;\r\n      }\r\n      return this.isGameOver;\r\n    },\r\n  };\r\n\r\n  return gameBoard;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Gameboard);\r\n\n\n//# sourceURL=webpack://battleship/./src/app/gameboard.js?");
+
+/***/ }),
+
 /***/ "./src/app/index.js":
 /*!**************************!*\
   !*** ./src/app/index.js ***!
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.scss */ \"./src/styles/main.scss\");\n/* harmony import */ var _ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ship */ \"./src/app/ship.js\");\n\r\n\r\n\r\ndocument.querySelector(\".test\").innerHTML = \"Hi There!\"\r\n\r\ndocument.querySelector(\"button\").addEventListener(\"click\", () => {\r\n    const newShip = (0,_ship__WEBPACK_IMPORTED_MODULE_1__.default)(3)\r\n    console.log(newShip);\r\n})\r\n\n\n//# sourceURL=webpack://battleship/./src/app/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/main.scss */ \"./src/styles/main.scss\");\n/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game */ \"./src/app/game.js\");\n\r\n\r\n\r\n(0,_game__WEBPACK_IMPORTED_MODULE_1__.initiateGame)();\r\n\n\n//# sourceURL=webpack://battleship/./src/app/index.js?");
+
+/***/ }),
+
+/***/ "./src/app/player.js":
+/*!***************************!*\
+  !*** ./src/app/player.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gameboard */ \"./src/app/gameboard.js\");\n\r\n\r\nfunction Player(type = \"human\") {\r\n  const player = {\r\n    playerGameboard: {},\r\n    playerMoves: [],\r\n    type: type != \"human\" ? (type = \"computer\") : (type = \"human\"),\r\n    startGame() {\r\n      const playerBoard = (0,_gameboard__WEBPACK_IMPORTED_MODULE_0__.default)();\r\n      this.playerGameboard = playerBoard;\r\n    },\r\n    attack(square, enemyBoard) {\r\n      enemyBoard.receiveAttack(square);\r\n    },\r\n    autoAttack(targetBoard) {\r\n      if (this.type != \"human\") {\r\n        const choice = Math.floor(Math.random() * 26);\r\n        // Check if same move has not been made already\r\n        if (!this.playerMoves.includes(choice)) {\r\n          targetBoard.receiveAttack(choice);\r\n          this.playerMoves.push(choice);\r\n        }\r\n        return choice;\r\n      }\r\n      return;\r\n    },\r\n  };\r\n\r\n  return player;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Player);\r\n\n\n//# sourceURL=webpack://battleship/./src/app/player.js?");
 
 /***/ }),
 
