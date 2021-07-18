@@ -3,7 +3,9 @@
   justify-content: space-around;
 }
 
-.gameBoard-wrapper {
+.gameBoard-wrapper,
+.gameBoard-human,
+.gameBoard-computer {
   border: 2px solid black;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -18,5 +20,9 @@
 
   &.-ship {
     background: red;
+  }
+
+  &.-test {
+    background: green;
   }
 }

@@ -13,26 +13,27 @@ function initiateGame() {
   userGameboard.placeShip(2, [83, 84]);
   computerGameboard.placeShip(2, [0, 1]);
   computerGameboard.placeShip(3, [7, 8, 9]);
-  computerGameboard.placeShip(4, [15, 16, 17, 18]);
-  computerGameboard.placeShip(2, [22, 23]);
+  computerGameboard.placeShip(4, [91, 92, 93, 94]);
+  computerGameboard.placeShip(2, [54, 55]);
   computerGameboard.placeShip(2, [4, 3]);
   createGameboard(user, userGameboard);
   createGameboard(computer, computerGameboard);
 }
 
 function createGameboard(player, playerGameboard) {
+  const playerType = player.type;
   // Create gameboard container
   const gameBoardWrapper = document.createElement("div");
-  gameBoardWrapper.className = "gameBoard-wrapper";
+  gameBoardWrapper.className = `gameBoard-${playerType}`;
   document.querySelector(".content").appendChild(gameBoardWrapper);
 
   // Create and add squares to gameboard container
-  const playerType = player.type;
+
   let n = 0;
   while (n < 100) {
     const square = document.createElement("div");
     square.className = "square";
-    square.setAttribute("id", `${n}-${playerType}`);
+    square.setAttribute("id", n);
     gameBoardWrapper.appendChild(square);
     n++;
   }
@@ -41,15 +42,18 @@ function createGameboard(player, playerGameboard) {
 
 function populatePlayerShips(playerType, playerGameboard) {
   let playerShips = playerGameboard.shipsArray;
-  console.log(playerShips);
+  let gameBoard;
+
+  if (playerType === "human") {
+    gameBoard = document.querySelector(".gameBoard-human");
+  } else {
+    gameBoard = document.querySelector(".gameBoard-computer");
+  }
 
   playerShips.forEach((ship) => {
     const shipCordinates = ship.shipPosition;
-    console.log(shipCordinates);
     shipCordinates.forEach((cordinate) => {
-      let squareToPopulate = document.getElementById(
-        `${cordinate}-${playerType}`
-      );
+      let squareToPopulate = gameBoard.children[cordinate];
       squareToPopulate.classList.add("-ship");
     });
   });
