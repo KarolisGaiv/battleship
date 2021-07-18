@@ -1,3 +1,8 @@
+.content {
+  display: flex;
+  justify-content: space-around;
+}
+
 .gameBoard-wrapper {
   border: 2px solid black;
   display: grid;
@@ -10,4 +15,8 @@
   height: 3rem;
   width: 3rem;
   border: 1px solid black;
+
+  &.-ship {
+    background: red;
+  }
 }
