@@ -48,14 +48,18 @@ describe("Computer attack functionality", () => {
   test("prevent for targeting same place twice", () => {
     let n = 0;
     let counter = 0;
-    while (n <= 100) {
+    while (n <= 200) {
       enemy.autoAttack(playerBoard);
       counter++;
       n++;
-      if (enemy.playerMoves.length === 25) {
+      if (enemy.playerMoves.length === 101) {
         break;
       }
     }
-    expect(enemy.playerMoves.length).toBeLessThanOrEqual(26);
+    enemy.playerMoves.sort(function (a, b) {
+      return a - b;
+    });
+    console.log(enemy.playerMoves);
+    expect(enemy.playerMoves.length).toBeLessThanOrEqual(101);
   });
 });

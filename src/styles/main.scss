@@ -1,5 +1,9 @@
-$_red: orange;
+.gameBoard-wrapper {
+  border: 2px solid black;
+}
 
-.test {
-    color: $_red;
+.square {
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid black;
 }

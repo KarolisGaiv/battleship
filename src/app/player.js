@@ -14,7 +14,7 @@ function Player(type = "human") {
     },
     autoAttack(targetBoard) {
       if (this.type != "human") {
-        const choice = Math.floor(Math.random() * 26);
+        const choice = Math.floor(Math.random() * 101);
         // Check if same move has not been made already
         if (!this.playerMoves.includes(choice)) {
           targetBoard.receiveAttack(choice);
