@@ -1,23 +1,31 @@
 import Player from "./player";
 import Gameboard from "./gameboard";
 
+let user;
+let computer;
+let currentPlayer;
+let userGameboard;
+let computerGameboard;
+
 function initiateGame() {
-  const user = Player();
-  const computer = Player("computer");
-  const userGameboard = Gameboard();
-  const computerGameboard = Gameboard();
+  user = Player();
+  computer = Player("computer");
+  userGameboard = Gameboard();
+  computerGameboard = Gameboard();
   userGameboard.placeShip(2, [3, 4]);
-  userGameboard.placeShip(3, [53, 54, 55]);
-  userGameboard.placeShip(4, [34, 35, 36, 37]);
-  userGameboard.placeShip(2, [10, 11]);
-  userGameboard.placeShip(2, [83, 84]);
-  computerGameboard.placeShip(2, [0, 1]);
+  // userGameboard.placeShip(3, [53, 54, 55]);
+  // userGameboard.placeShip(4, [34, 35, 36, 37]);
+  // userGameboard.placeShip(2, [10, 11]);
+  // userGameboard.placeShip(2, [83, 84]);
+  // computerGameboard.placeShip(2, [0, 1]);
   computerGameboard.placeShip(3, [7, 8, 9]);
-  computerGameboard.placeShip(4, [91, 92, 93, 94]);
-  computerGameboard.placeShip(2, [54, 55]);
+  // computerGameboard.placeShip(4, [91, 92, 93, 94]);
+  // computerGameboard.placeShip(2, [54, 55]);
   computerGameboard.placeShip(2, [4, 3]);
   createGameboard(user, userGameboard);
   createGameboard(computer, computerGameboard);
+  console.log(user);
+  currentPlayer = user;
 }
 
 function createGameboard(player, playerGameboard) {
@@ -28,7 +36,6 @@ function createGameboard(player, playerGameboard) {
   document.querySelector(".content").appendChild(gameBoardWrapper);
 
   // Create and add squares to gameboard container
-
   let n = 0;
   while (n < 100) {
     const square = document.createElement("div");
@@ -59,4 +66,11 @@ function populatePlayerShips(playerType, playerGameboard) {
   });
 }
 
-export { initiateGame };
+function attack(square) {
+  user.attack(square, computerGameboard);
+  currentPlayer = computer;
+  computer.autoAttack(userGameboard);
+  currentPlayer = user;
+}
+
+export { initiateGame, attack };

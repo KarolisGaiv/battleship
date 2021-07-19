@@ -1,5 +1,5 @@
 import "../styles/main.scss";
-import { initiateGame } from "./game";
+import { initiateGame, attack } from "./game";
 
 initiateGame();
 
@@ -8,6 +8,6 @@ const squares = document.querySelectorAll(".square");
 squares.forEach((square) => {
   square.addEventListener("click", () => {
     square.classList.add("-test");
-    console.log(square.id);
+    attack(square.id);
   });
 });

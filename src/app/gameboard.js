@@ -20,12 +20,13 @@ function Gameboard() {
       this.shipsArray.push(ship);
     },
     receiveAttack(squareToHit) {
+      let target = parseInt(squareToHit);
       // Find ship to be hit
-      const targetShip = findShip(squareToHit, this.shipsArray);
+      const targetShip = findShip(target, this.shipsArray);
       if (targetShip) {
-        targetShip.hit(squareToHit);
+        targetShip.hit(target);
       } else {
-        this.missedShots.push(squareToHit);
+        this.missedShots.push(target);
       }
     },
     checkForGameOver(placedShips) {
