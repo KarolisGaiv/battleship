@@ -24,8 +24,9 @@ function initiateGame() {
   computerGameboard.placeShip(2, [4, 3]);
   createGameboard(user, userGameboard);
   createGameboard(computer, computerGameboard);
-  console.log(user);
   currentPlayer = user;
+  // console.log(userGameboard);
+  console.log(computerGameboard);
 }
 
 function createGameboard(player, playerGameboard) {
@@ -71,6 +72,22 @@ function attack(square) {
   currentPlayer = computer;
   computer.autoAttack(userGameboard);
   currentPlayer = user;
+  checkForGameOver(userGameboard);
+  checkForGameOver(computerGameboard);
+}
+
+function checkForGameOver(gameboard) {
+  let shipsArray = gameboard.shipsArray;
+  let isGameOver = false;
+
+  shipsArray.every((ship) => {
+    ship.isDestroyed ? (isGameOver = !isGameOver) : null;
+  });
+
+  if (isGameOver) {
+    gameboard.isGameOver = true;
+    alert("Game over");
+  }
 }
 
 export { initiateGame, attack };

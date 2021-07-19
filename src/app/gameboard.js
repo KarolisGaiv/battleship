@@ -29,16 +29,16 @@ function Gameboard() {
         this.missedShots.push(target);
       }
     },
-    checkForGameOver(placedShips) {
-      const isAllShipsDestroyed = placedShips.every((ship) => {
-        ship.isSunk();
-        return ship.isDestroyed;
-      });
-      if (isAllShipsDestroyed) {
-        this.isGameOver = !this.isGameOver;
-      }
-      return this.isGameOver;
-    },
+    // checkForGameOver(placedShips) {
+    //   const isAllShipsDestroyed = placedShips.every((ship) => {
+    //     ship.isSunk();
+    //     return ship.isDestroyed;
+    //   });
+    //   if (isAllShipsDestroyed) {
+    //     this.isGameOver = !this.isGameOver;
+    //   }
+    //   return this.isGameOver;
+    // },
   };
 
   return gameBoard;
