@@ -25,7 +25,6 @@ function initiateGame() {
   createGameboard(user, userGameboard);
   createGameboard(computer, computerGameboard);
   currentPlayer = user;
-  // console.log(userGameboard);
   console.log(computerGameboard);
 }
 
@@ -58,13 +57,15 @@ function populatePlayerShips(playerType, playerGameboard) {
     gameBoard = document.querySelector(".gameBoard-computer");
   }
 
-  playerShips.forEach((ship) => {
-    const shipCordinates = ship.shipPosition;
-    shipCordinates.forEach((cordinate) => {
-      let squareToPopulate = gameBoard.children[cordinate];
-      squareToPopulate.classList.add("-ship");
+  if (playerType === "human") {
+    playerShips.forEach((ship) => {
+      const shipCordinates = ship.shipPosition;
+      shipCordinates.forEach((cordinate) => {
+        let squareToPopulate = gameBoard.children[cordinate];
+        squareToPopulate.classList.add("-ship");
+      });
     });
-  });
+  }
 }
 
 function attack(square) {

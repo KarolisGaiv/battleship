@@ -37,7 +37,7 @@ describe("Gameboard receive attack funcionality", () => {
 });
 
 describe("Gameboard check game over functionality", () => {
-  test("report when all ships have been destroyed", () => {
+  test.skip("report when all ships have been destroyed", () => {
     let gameBoard = Gameboard();
     gameBoard.placeShip(3, [1, 2, 3]);
 
@@ -48,7 +48,7 @@ describe("Gameboard check game over functionality", () => {
     expect(gameBoard.isGameOver).toBe(true);
   });
 
-  test("not all ships have been destroyed", () => {
+  test.skip("not all ships have been destroyed", () => {
     let gameBoard = Gameboard();
     gameBoard.placeShip(1, [1]);
     gameBoard.placeShip(1, [5]);
